@@ -2,6 +2,7 @@ package com.lrm.blog.web.admin;
 
 import com.lrm.blog.po.Type;
 import com.lrm.blog.service.TypeService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -27,6 +28,7 @@ import javax.validation.Valid;
 /**
  * 分类管理的控制层
  */
+@Api(description = "分类管理模块")
 @Controller
 @RequestMapping("/admin") //后端请求路径是全局
 public class TypeController {

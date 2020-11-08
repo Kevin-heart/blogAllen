@@ -2,6 +2,7 @@ package com.lrm.blog.web.admin;
 
 import com.lrm.blog.po.Tag;
 import com.lrm.blog.service.TagService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -25,6 +26,7 @@ import javax.validation.Valid;
  *
  * @version: V2.2
  */
+@Api(description = "博客的标签模块")
 @Controller
 @RequestMapping("/admin")
 public class TagController {

@@ -1,3 +1,6 @@
+server:
+  port: 8001 #生成环境的服务端口号
+
 #生产环境
 spring:
   datasource:
@@ -16,5 +19,3 @@ logging:
     com.lrm: info
   file:
     name: log/blog-pro.log
-server:
-  port: 8001

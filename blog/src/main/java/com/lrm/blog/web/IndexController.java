@@ -1,5 +1,6 @@
 package com.lrm.blog.web;
 
+import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 /**
  * 控制层
  */
+@Api(description = "页面模块")
 @Controller
 public class IndexController {
 

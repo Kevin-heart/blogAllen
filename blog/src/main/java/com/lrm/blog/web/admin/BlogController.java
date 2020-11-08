@@ -6,6 +6,8 @@ import com.lrm.blog.service.BlogService;
 import com.lrm.blog.service.TagService;
 import com.lrm.blog.service.TypeService;
 import com.lrm.blog.vo.BlogQuery;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -30,6 +32,7 @@ import javax.servlet.http.HttpSession;
 /**
  * 控制器层处理博客管理blogs的业务
  */
+@Api(description = "博客管理模块")
 @Controller
 @RequestMapping("/admin") //全局请求路径
 public class BlogController {
@@ -43,13 +46,14 @@ public class BlogController {
     private BlogService blogService;
 
     //注入 TypeService
-    @Autowired
+    @Autowired //自动装配
     private TypeService typeService;
 
-    @Autowired
+    @Autowired //自动装配
     private TagService tagService;
 
     //1:定义一个方法访问博客管理页面
+    @ApiOperation(value = "访问博客管理页面")
     @GetMapping("/blogs")//请求路径
     //加入试图模型 传入定义的方法
     public String blogs(@PageableDefault
@@ -62,6 +66,7 @@ public class BlogController {
     }
 
     //2:定义一个方法查询博客管理页面
+    @ApiOperation(value = "查询博客管理页面")
     @PostMapping("/blogs/search")//请求路径
     //加入试图模型 传入定义的方法
     public String search(@PageableDefault
@@ -73,7 +78,8 @@ public class BlogController {
         return "admin/blogs :: blogList";
     }
 
-    //3:请求到 admin/input 页面博客发布
+    //3: 请求到 admin/input 页面博客发布
+    @ApiOperation(value = "博客发布方法")
     @GetMapping("/blogs/input")
     public String input(Model model) {
         model.addAttribute("types", typeService.listType());
@@ -82,7 +88,8 @@ public class BlogController {
         return INPUT;
     }
 
-    //4:博客新增保存的方法
+    //4: 博客新增保存的方法
+    @ApiOperation(value = "博客新增保存的方法")
     @PostMapping("/blogs")
     //传入 blog 对象
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session) {

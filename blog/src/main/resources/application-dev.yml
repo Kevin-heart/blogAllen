@@ -1,7 +1,10 @@
+server:
+  port: 8002 #博客的服务端口号
+
 #开发环境
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf-8
     username: root
     password:
@@ -40,11 +43,11 @@ spring:
  #@OneToOne	定义了连接表之间有一个一对一的关系。
  #@NamedQueries	指定命名查询的列表。
  #@NamedQuery	指定使用静态名称的查询。
+
 logging:
   level:
     root: info
     com.lrm: debug
   file:
     name: log/blog-dev.log
-server:
-  port: 8002
+

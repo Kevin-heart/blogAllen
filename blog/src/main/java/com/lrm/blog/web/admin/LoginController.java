@@ -1,14 +1,9 @@
 package com.lrm.blog.web.admin;
 
-/**
- * 项目名称：blog
- * 类 名 称：LoginController
- * 类 描 述：TODO
- * 创建时间：2020/7/2 8:47 下午
- * 创 建 人：huanghao
- */
 import com.lrm.blog.po.User;
 import com.lrm.blog.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +17,7 @@ import javax.servlet.http.HttpSession;
  * 后台的控制层请求处理层
  */
 //后台登录的Controller控制层
+@Api(description = "后台注册登录")
 @Controller
 @RequestMapping("/admin") //全局访问用GET请求的请求路径
 public class LoginController {
@@ -30,6 +26,7 @@ public class LoginController {
     private UserService userService;
 
     //1:定义一个方法跳转到后台登录页面
+    @ApiOperation(value = "跳转到后台页面的方法")
     @GetMapping
     public String loginPage(){
 
@@ -38,6 +35,7 @@ public class LoginController {
 
     //2:定义跳转到登录页面之后登录页面提交的时候 我们就调用该方法把username用户名和密码传过来 然后处理判断
     //登录方法使用post方式提交
+    @ApiOperation(value = "根据姓名和密码使用 post 提交")
     @PostMapping("/login")//请求的路径/admin/login到登录之后接收处理判断
     //通过@RuquestParam接收拿到的参数
     public String login(@RequestParam String username,
@@ -64,6 +62,7 @@ public class LoginController {
         }
     }
         //3:这个方法就是用户登录登出注销当前登录的用户
+        @ApiOperation(value = "用户登录登出注销当前登录的用户")
         @GetMapping("/logout")
         public String logout(HttpSession session){
 
